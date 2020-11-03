@@ -1,13 +1,25 @@
-.nav-bar{
+#navigation-bar{
+    margin:0;
     display: flex;
     box-sizing: border-box;
     justify-content: flex-end;
     align-items: flex-end;
+    list-style: none;
     background-color:  #CB4BA7;
     color: #ffffff;
-    height: 10rem;
-    width: 100%
+    min-height: 10rem;
+    max-width: 100%;
 }
-.nav-bar.p{
-    padding: 2rem;
+#navigation-bar li {
+    padding: 1rem;
+}
+#navigation-bar li a{
+    padding: 0.5rem;
+    text-decoration: none;
+    color: #ffffff
+}
+
+#navigation-bar li a:hover{
+   cursor: pointer;
+   background: darker(#CB4BA7, 5)
 }
