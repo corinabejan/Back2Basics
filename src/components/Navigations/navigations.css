@@ -1,0 +1,13 @@
+.nav-bar{
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color:  #CB4BA7;
+    color: #ffffff;
+    height: 10rem;
+    width: 100%
+}
+.nav-bar.p{
+    padding: 2rem;
+}
