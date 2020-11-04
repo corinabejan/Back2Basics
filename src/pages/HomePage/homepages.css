@@ -1,0 +1,31 @@
+.home-container {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+}
+.text-container-1{
+    width: 100%;
+    height: 20rem;
+    color: #000000;
+    box-sizing: border-box;
+    justify-content: start;
+}
+h3{
+    text-align: start;
+    padding: 2rem;
+}
+p{
+    padding-left: 4rem;
+    text-align: start;
+
+}
+.text-container-2{
+    width: 100%;
+    height: 20rem;
+    background-color: #CB4BA7
+}
+.text-container-3{
+    width: 100%;
+    height: 20rem;
+    color: #000000;
+    box-sizing: border-box;
+}
