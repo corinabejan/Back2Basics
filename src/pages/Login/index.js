@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
+import { useHistory } from "react-router-dom"
 import firebase from 'firebase'
 
 export default function LoginScreen(){
+    const history = useHistory()
     const [email, set_Email] = useState("")
     const [password, set_Password] =useState("")
 
@@ -17,6 +19,10 @@ export default function LoginScreen(){
         })
         set_Password("")
         set_Email("")
+
+        //push to specific dashboard when possible
+
+        history.push("/teacher")
         
     }
 
