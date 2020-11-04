@@ -10,8 +10,6 @@ export default function LoginScreen(){
     function sendEmail(e){
         e.preventDefault()
 
-        console.log("Event test", email, password)
-
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function(e){
             var errorCode = e.code;
             var errorMessage = e.message;

@@ -12,10 +12,6 @@ export default function SignUp(){
 
     function sendDatabase(){
             const database = firebase.firestore()
-        
-            console.log(firebase.auth())
-            console.log(firebase.auth().currentUser.uid)
-            console.log(currentUser)
 
             database.collection("users").doc(firebase.auth().currentUser.uid).set({
                 user_name: name,
@@ -51,9 +47,8 @@ export default function SignUp(){
             console.log(`Error, ${errorCode}, ${errorMessage}`)
         })
 
-        console.log(`Credentials: ${status} ${name}`)
-
         sendDatabase()
+
     } catch(error){
         console.log(error)
     }
@@ -62,13 +57,13 @@ export default function SignUp(){
 const uploadImage = async (e) => {
     try{
         e.preventDefault()
+
         const files = e.target.files
-        console.log("file", files)
+
         const data = new FormData()
         data.append("file", files[0])
         data.append("upload_preset", "profile_pics")
 
-        console.log("Data Test", data)
 
         const response = await fetch(
             "https://api.cloudinary.com/v1_1/djzjepmnr/image/upload",
@@ -78,8 +73,8 @@ const uploadImage = async (e) => {
             })
 
             const file = await response.json();
-            console.log("Image", file)
             set_UserImage(file.secure_url)
+            
     }catch(error){
         console.log("Error", error)
     }

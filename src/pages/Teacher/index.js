@@ -16,8 +16,6 @@ export default function Teacher(){
             ? set_TeacherData(document.data())
             : console.log("No Document found")
         })
-    
-        console.log("Teacher", teacherData.user_image)
     }, [])
 
 
