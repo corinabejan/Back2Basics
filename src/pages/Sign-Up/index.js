@@ -59,6 +59,32 @@ export default function SignUp(){
     }
 }
 
+const uploadImage = async (e) => {
+    try{
+        e.preventDefault()
+        const files = e.target.files
+        console.log("file", files)
+        const data = new FormData()
+        data.append("file", files[0])
+        data.append("upload_preset", "profile_pics")
+
+        console.log("Data Test", data)
+
+        const response = await fetch(
+            "https://api.cloudinary.com/v1_1/djzjepmnr/image/upload",
+            {
+                method: "POST",
+                body: data
+            })
+
+            const file = await response.json();
+            console.log("Image", file)
+            set_UserImage(file.secure_url)
+    }catch(error){
+        console.log("Error", error)
+    }
+}
+
     return (
         <div>
             <h1>
@@ -90,8 +116,8 @@ export default function SignUp(){
                 </label>
                 <input
                     type="file"
-                    value={userImage}
-                    onChange={(e) => set_UserImage(e.target.value)}
+                    name="file"
+                    onChange={uploadImage}
                 />
                 <label>
                     Classified as:

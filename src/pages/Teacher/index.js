@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import firebase from "firebase"
 
@@ -10,11 +10,15 @@ export default function Teacher(){
 
     const docRef = db.collection("users").doc(auth.currentUser.uid)
 
-    docRef.onSnapshot(function(document){
-        document.exists
-        ? set_TeacherData(document.data())
-        : console.log("No Document found")
-    })
+    useEffect(() => {
+        docRef.onSnapshot(function(document){
+            document.exists
+            ? set_TeacherData(document.data())
+            : console.log("No Document found")
+        })
+    
+        console.log("Teacher", teacherData.user_image)
+    }, [])
 
 
     return(
@@ -25,9 +29,12 @@ export default function Teacher(){
             <h2>
                 {teacherData.user_name}
             </h2>
-            <p>
-                Image as avatar
-            </p>
+            <img
+                src={teacherData.user_image}
+                alt="Profile Picture"
+                width="50px"
+                height="50px"
+            />
             <Link to="/">Add a Regular Lesson</Link>
             <br />
             <Link to="/login">Schedule a Live Stream</Link>
