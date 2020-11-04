@@ -14,8 +14,13 @@ function App() {
         Back 2 Basics
       </header>
       <Switch>
-          <PrivateRoute exact path="/" />
-          <PrivateRoute exact path ="/teacher" />
+          <PrivateRoute 
+            exact path="/" 
+          />
+          <PrivateRoute 
+            exact path ="/teacher" 
+            component={Teacher} 
+          />
           <Route
             exact path="/login"
             component={LoginScreen}
