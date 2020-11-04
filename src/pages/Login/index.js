@@ -28,9 +28,11 @@ export default function LoginScreen() {
             <h1>
                 Login
             </h1>
-            <form>
-                <label>
-                    Email: {" "}
+            <form className="login-form">
+                <div>
+                    <label>
+                        Email:
+                    </label>
                     <input
                         type="email"
                         id="user_email"
@@ -38,23 +40,26 @@ export default function LoginScreen() {
                         value={email}
                         onChange={(e) => set_Email(e.target.value)}
                     />
-                </label>
-                <label>
-                    Password:{" "}
+                </div>
+                <div>
+                    <label>
+                        Password:
+                    </label>
                     <input
                         type="password"
                         id="user_password"
                         value={password}
                         onChange={(e) => set_Password(e.target.value)}
                     />
-                </label>
-                <button
-                    type="submit"
-                    onClick={sendEmail}
-                >Login</button>
-                <Link to="/signup">
-                    <p>sign up here</p>
-                </Link>
+                </div>
+                    <button
+                        type="submit"
+                        onClick={sendEmail}
+                    >Login
+                    </button>
+                    <Link to="/signup">
+                        <p>sign up here</p>
+                    </Link>
             </form>
         </div>
     )
