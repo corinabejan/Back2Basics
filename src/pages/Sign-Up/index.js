@@ -11,8 +11,9 @@ export default function SignUp(){
 
     function sendDatabase(){
         const database = firebase.firestore()
+        const uniqueId = firebase.auth().currentUser
 
-        database.collection("users").doc(name).set({
+        database.collection("users").doc(uniqueId).set({
             user_name: name,
             user_image: userImage,
             user_credentials: status,

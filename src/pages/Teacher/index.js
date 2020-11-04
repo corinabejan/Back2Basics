@@ -1,8 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import firebase from "firebase"
 
 
 export default function Teacher(){
+    const db = firebase.firestore()
+
+    
     return(
         <div>
             <h1>
