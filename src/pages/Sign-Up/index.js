@@ -8,29 +8,44 @@ export default function SignUp(){
     const [userImage, set_UserImage] = useState("")
     const [status, set_Status] = useState("")
     const [password, set_Password] = useState("")
+    const [currentUser, set_CurrentUser] = useState(null)
 
     function sendDatabase(){
-        const database = firebase.firestore()
-        const uniqueId = firebase.auth().currentUser
+            const database = firebase.firestore()
+        
+            console.log(firebase.auth())
+            console.log(firebase.auth().currentUser.uid)
+            console.log(currentUser)
 
-        database.collection("users").doc(uniqueId).set({
-            user_name: name,
-            user_image: userImage,
-            user_credentials: status,
-            user_password: password,
-        })
-        .then(function(){
-            console.log("Document successly stored")
-        })
-        .catch(function(e){
-            console.log("Error", e)
-        })
+            database.collection("users").doc(firebase.auth().currentUser.uid).set({
+                user_name: name,
+                user_email: email,
+                user_image: userImage,
+                user_credentials: status,
+            })
+            .then(function(){
+                console.log("success")
+            })
+            .catch(function(e){
+                console.log("Fail", e)
+            })
+
+            set_Name("")
+            set_Email("")
+            set_UserImage("")
+            set_Status("")
+            set_Password("")
     }
 
-    function sendNewData(e){
+    async function sendNewData(e){
+        try{
         e.preventDefault()
 
-        firebase.auth().createUserWithEmailAndPassword(email,password).catch(function(e){
+        await firebase.auth().createUserWithEmailAndPassword(email,password)
+        .then(() => {
+            set_CurrentUser(firebase.auth().currentUser)
+        })
+        .catch(function(e){
             var errorCode = e.code;
             var errorMessage = e.message;
             console.log(`Error, ${errorCode}, ${errorMessage}`)
@@ -39,14 +54,10 @@ export default function SignUp(){
         console.log(`Credentials: ${status} ${name}`)
 
         sendDatabase()
-
-        set_Name("")
-        set_Email("")
-        set_UserImage("")
-        set_Status("")
-        set_Password("")
-
+    } catch(error){
+        console.log(error)
     }
+}
 
     return (
         <div>
