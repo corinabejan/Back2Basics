@@ -1,8 +1,9 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import firebase from "firebase"
+import "./signup.css"
 
 
-export default function SignUp(){
+export default function SignUp() {
     const [name, set_Name] = useState("")
     const [email, set_Email] = useState("")
     const [userImage, set_UserImage] = useState("")
@@ -81,85 +82,96 @@ const uploadImage = async (e) => {
 }
 
     return (
-        <div>
+        <div id="signup-container">
             <h1>
                 Sign-Up
             </h1>
-            <form>
-                <label>
-                    Name:
-                </label>
-                <input
-                    type="text"
-                    value={name}
-                    placeholder="Jeff"
-                    required
-                    onChange={(e) => set_Name(e.target.value)}
-                />
-                <label>
-                    Email:
-                </label>
-                <input
-                    type="email"
-                    value={email}
-                    placeholder="example@gmail.com"
-                    required
-                    onChange={(e) => set_Email(e.target.value)}
-                />
-                <label>
-                    Profile Photo:
-                </label>
-                <input
-                    type="file"
-                    name="file"
-                    onChange={uploadImage}
-                />
-                <label>
-                    Classified as:
-                </label>
-                <select
-                    id="status"
-                    required
-                >
-                    <option
-                        value="student"
-                        onClick={(e) => set_Status(e.target.value)}>
+            <form className="signup-form">
+                <div>
+
+                    <label>
+                        Name:
+                    </label>
+                    <input
+                        type="text"
+                        value={name}
+                        placeholder="Jeff"
+                        required
+                        onChange={(e) => set_Name(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label>
+                        Email:
+                     </label>
+                    <input
+                        type="email"
+                        value={email}
+                        placeholder="example@gmail.com"
+                        required
+                        onChange={(e) => set_Email(e.target.value)}
+                    />
+                </div>
+                <div>
+
+                    <label>
+                        Profile Photo: 
+                    </label>
+                    <input
+                        type="file"
+                        name="file"
+                        onChange={uploadImage}
+                    />
+                </div>
+                <div>
+                    <label>
+                        Classified as:
+                    </label>
+                    <select
+                        id="status"
+                        required
+                    >
+                        <option
+                            value="student"
+                            onClick={(e) => set_Status(e.target.value)}>
                             Student
                     </option>
-                    <option
-                        value="Teacher"
-                        onClick={(e) => set_Status(e.target.value)}
-                    >
-                        Teacher
+                        <option
+                            value="Teacher"
+                            onClick={(e) => set_Status(e.target.value)}
+                        >
+                            Teacher
                     </option>
-                    <option
-                        value="men-tee"
-                        onClick={(e) => set_Status(e.target.value)}
-                    >
-                        Men-Tee
+                        <option
+                            value="men-tee"
+                            onClick={(e) => set_Status(e.target.value)}
+                        >
+                            Men-Tee
                     </option>
-                    <option
-                        value="Mentor"
-                        onClick={(e) => set_Status(e.target.value)}
-                    >
-                        Mentor
+                        <option
+                            value="Mentor"
+                            onClick={(e) => set_Status(e.target.value)}
+                        >
+                            Mentor
                     </option>
-                </select>
-                <label>
-                    Password:
-                </label>
-                <input
-                    type="text"
-                    value={password}
-                    required
-                    onChange={(e) => set_Password(e.target.value)}
-                />
+                    </select>
+                </div>
+                <div>
+
+                    <label>Password:</label>
+                    <input
+                        type="text"
+                        value={password}
+                        required
+                        onChange={(e) => set_Password(e.target.value)}
+                    />
+                </div>
                 <button
                     type="submit"
                     onClick={sendNewData}>
                     Submit
                 </button>
             </form>
-        </div>
+        </div >
     )
 }

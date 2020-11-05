@@ -1,0 +1,53 @@
+#mentor-container {
+    margin: 0;
+    width: 100%;
+    padding:1
+}
+.welcome-text {
+    color: #000000;
+    text-align: end;
+    font-size: 14px;
+    padding-right: 1.5rem;
+}
+.profile-info {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas: "bioimage bio";
+    padding: 3rem 5rem
+
+}
+.bio-img {
+    grid-area: bioimage;
+    margin: auto;
+    border: #CB4BA7 2px solid;
+    border-radius: 50%;
+    height: 10rem;
+
+}
+.intro-container {
+    grid-area: bio;
+    width: 30rem;
+    height: 20rem;
+    background-color: #CB4BA7;
+    color: #ffffff;
+    font-size: 14px;
+}
+.intro-container p {
+    text-align: justify;
+    padding: 1rem;
+}
+.intro-container h3 {
+    padding: 1rem
+}
+
+button {
+background-color: #CB4BA7;
+height: 2rem;
+width: 10rem;
+text-align: center;
+border-radius: 1rem;
+font-size: medium;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+border-color: #CB4BA7;
+border-style: none;
+}
