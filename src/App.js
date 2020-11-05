@@ -7,23 +7,23 @@ import { AuthProvider } from "./Components/Auth"
 import PrivateRoute from "./Components/PrivateRoute"
 import Navigation from './components/Navigations/Navigation';
 import HomePage from "./pages/HomePage/HomePage"
-import Mentors from './pages/Mentor/Mentors';
-import Mentee from './pages/Mentee/Mentee-list/Mentee'
+import MentorsDetail from './pages/Mentor/MentorDetail';
+import MenteeList from './pages/Mentee/Mentee-list/MenteeList'
 import MenteeDetail from './pages/Mentee/Mentee-detail'
 import MentorList from './pages/Mentor/Mentor-list';
 
 function App() {
   return (
     <AuthProvider>
-    <div className="App">
-      <Navigation />
-      <header className="App-header">
-        Back 2 Basics
+      <div className="App">
+        <Navigation />
+        <header className="App-header">
+          Back 2 Basics
       </header>
-      <Switch>
-          <PrivateRoute 
-            exact path ="/teacher" 
-            component={Teacher} 
+        <Switch>
+          <PrivateRoute
+            exact path="/teacher"
+            component={Teacher}
           />
           <Route
             exact path="/"
@@ -34,15 +34,15 @@ function App() {
             component={MentorList}
           />
           <Route
-            exact path="/mentors/:id"
-            component={Mentors}
+            exact path="mentors/id"
+            component={MentorsDetail}
           />
           <Route
             exact path="/mentee"
-            component={Mentee}
+            component={MenteeList}
           />
           <Route
-            exact path="/mentee/:id"
+            exact path="/mentees/:id"
             component={MenteeDetail}
           />
           <Route
@@ -54,7 +54,7 @@ function App() {
             component={SignUp}
           />
         </Switch>
-    </div>
+      </div>
     </AuthProvider>
   );
 }
