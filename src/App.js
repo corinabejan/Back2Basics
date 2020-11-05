@@ -8,6 +8,7 @@ import PrivateRoute from "./Components/PrivateRoute"
 import Navigation from './components/Navigations/Navigation';
 import HomePage from "./pages/HomePage/HomePage"
 import Mentors from './pages/Mentor/Mentors';
+import RegularLessons from "./pages/RegularLessons/alphabet"
 
 function App() {
   return (
@@ -18,17 +19,9 @@ function App() {
         Back 2 Basics
       </header>
       <Switch>
-          <PrivateRoute 
-            exact path ="/teacher" 
-            component={Teacher} 
-          />
           <Route
             exact path="/"
             component={HomePage}
-          />
-          <Route
-            exact path="/mentor"
-            component={Mentors}
           />
           <Route
             exact path="/login"
@@ -37,6 +30,18 @@ function App() {
           <Route
             exact path="/signup"
             component={SignUp}
+          />
+          <PrivateRoute 
+            exact path ="/teacher" 
+            component={Teacher} 
+          />
+          <PrivateRoute
+            exact path="/mentor"
+            component={Mentors}
+          />
+          <Route
+            exact path="/regular/alphabet"
+            component={RegularLessons}
           />
         </Switch>
     </div>

@@ -109,12 +109,12 @@ export default function Teacher(){
                         :   <br />
                     
             }
-            {teacherData.teacher_skills.length >= 1
+            {teacherData.teacher_skills !== undefined
                     ? teacherData.teacher_skills.map(skill => {
                         return (
-                            <div>
+                            <div
+                                key={skill}>
                                 <Badge
-                                    key={skill}
                                     style={{
                                         width: "fit-content",
                                         height: "20px",
