@@ -17,8 +17,8 @@ export default function RegularLessons(){
             docRef.get()
             .then(function(doc){
                 if(doc.exists){
-                    set_Videos(doc.data().video_url)
                     set_VideoWatcher(doc.data().video_url.shift()) 
+                    set_Videos(doc.data().video_url)
                 } else {
                     console.log("No videos found!")
                 }
@@ -36,6 +36,7 @@ export default function RegularLessons(){
     }
     
     function lastVideo(){
+        videos.unshift(videoWatcher)
         const video = videosWatched.pop()
         set_VideoWatcher(video)
 
