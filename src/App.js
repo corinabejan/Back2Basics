@@ -21,7 +21,7 @@ function App() {
           <PrivateRoute 
             exact path ="/teacher" 
             component={Teacher} 
-        <Switch>
+          />
           <Route
             exact path="/"
             component={HomePage}
@@ -39,8 +39,6 @@ function App() {
             component={SignUp}
           />
         </Switch>
-      </header>
-
     </div>
     </AuthProvider>
   );

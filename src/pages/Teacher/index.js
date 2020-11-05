@@ -17,12 +17,15 @@ export default function Teacher(){
     const docRef = db.collection("users").doc(auth.currentUser.uid)
 
     useEffect(() => {
-        docRef.onSnapshot(function(document){
-            document.exists
-            ? set_TeacherData(document.data())
-            : console.log("No Document found")
-        })
-    }, [docRef])
+        if(!teacherData.teacher_skills){
+            docRef.onSnapshot(function(document){
+                document.exists
+                ? set_TeacherData(document.data())
+                : console.log("No Document found")
+            })
+        }
+        console.log(teacherData)
+    }, [docRef, teacherData])
 
     function infoAdder(e){
         e.preventDefault()
@@ -106,7 +109,7 @@ export default function Teacher(){
                         :   <br />
                     
             }
-            {(teacherData.teacher_skills.length >= 1)
+            {teacherData.teacher_skills.length >= 1
                     ? teacherData.teacher_skills.map(skill => {
                         return (
                             <div>
