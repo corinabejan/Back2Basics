@@ -10,8 +10,11 @@ import HomePage from "./pages/HomePage/HomePage"
 import Mentors from './pages/Mentor/Mentors';
 import RegularLessons from "./pages/RegularLessons/alphabet"
 import Mentee from './pages/Mentee/Mentee-list/Mentee'
+// import MenteeDetail from './pages/Mentee/Mentee-detail'
 import MentorList from './pages/Mentor/Mentor-list';
+import Student from './pages/Student'
 import MathLesson from "./pages/RegularLessons/math"
+
 
 
 function App() {
@@ -39,6 +42,12 @@ function App() {
             exact path="/mentees"
             component={Mentee}
           />
+
+          {/* <Route
+            exact path="/mentee/:id"
+            component={MenteeDetail}
+          /> */}
+
           <Route
             exact path="/login"
             component={LoginScreen}
@@ -56,8 +65,14 @@ function App() {
             component={RegularLessons}
           />
           <Route
+
+          exact path="/student"
+          component={Student}
+          />
+          <Route
             exact path="/regular/math"
             component={MathLesson}
+
           />
         </Switch>
     </div>
