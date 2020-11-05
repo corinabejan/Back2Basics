@@ -9,6 +9,11 @@
   z-index: -1;
 }
 
+.math {
+  margin-top: 20px;
+  margin: 50px;
+}
+
 img {
   width: 100px;
   margin-bottom: 10px;
