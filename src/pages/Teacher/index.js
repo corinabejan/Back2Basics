@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import firebase from "firebase"
+import Badge from "react-bootstrap/Badge"
 
 const skillsArray = ["Math", "Reading", "Writing", 
         "Social Studies", "Enviromental", "Creative Arts", "Technology"]
@@ -61,17 +62,17 @@ export default function Teacher(){
     }
 
     const optionSetter = skillsArray.map(skill => {
-                        return (
-                            <option
-                                key={skill}
-                                value={skill}
-                                onClick={(e) => {
-                                    console.log("Skill test", skills)
-                                    skillsAdder(e)}
-                                }
-                            >{skill}</option>
-                            )
-                        })
+                            return (
+                                <option
+                                    key={skill}
+                                    value={skill}
+                                    onClick={(e) => {
+                                        console.log("Skill test", skills)
+                                        skillsAdder(e)}
+                                    }
+                                >{skill}</option>
+                                )
+                            })
 
     return(
         <div>
@@ -87,6 +88,43 @@ export default function Teacher(){
                 width="50px"
                 height="50px"
             />
+            {(teacherData.teacher_language)
+                        ?   <div>
+                                <h5>
+                                    Language & Skills:
+                                </h5>
+                                <Badge 
+                                    style={{
+                                        width: "fit-content",
+                                        height: "20px",
+                                        background:"hotpink",
+                                    }}
+                                    pill>
+                                    {teacherData.teacher_language}
+                                </Badge>
+                            </div>
+                        :   <br />
+                    
+            }
+            {(teacherData.teacher_skills.length >= 1)
+                    ? teacherData.teacher_skills.map(skill => {
+                        return (
+                            <div>
+                                <Badge
+                                    key={skill}
+                                    style={{
+                                        width: "fit-content",
+                                        height: "20px",
+                                        background:"hotpink",
+                                    }}
+                                    pill>
+                                    {skill}
+                                </Badge>
+                            </div>
+                        )})
+                    : <br />
+            }
+                    
             <form>
                 <label>
                     Skills:
