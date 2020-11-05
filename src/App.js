@@ -9,6 +9,10 @@ import Navigation from './components/Navigations/Navigation';
 import HomePage from "./pages/HomePage/HomePage"
 import Mentors from './pages/Mentor/Mentors';
 import RegularLessons from "./pages/RegularLessons/alphabet"
+import Mentee from './pages/Mentee/Mentee-list/Mentee'
+import MenteeDetail from './pages/Mentee/Mentee-detail'
+import MentorList from './pages/Mentor/Mentor-list';
+
 
 function App() {
   return (
@@ -24,6 +28,22 @@ function App() {
             component={HomePage}
           />
           <Route
+            exact path="/mentors"
+            component={MentorList}
+          />
+          <Route
+            exact path="/mentors/:id"
+            component={Mentors}
+          />
+          <Route
+            exact path="/mentees"
+            component={Mentee}
+          />
+          <Route
+            exact path="/mentee/:id"
+            component={MenteeDetail}
+          />
+          <Route
             exact path="/login"
             component={LoginScreen}
           />
@@ -34,10 +54,6 @@ function App() {
           <PrivateRoute 
             exact path ="/teacher" 
             component={Teacher} 
-          />
-          <PrivateRoute
-            exact path="/mentor"
-            component={Mentors}
           />
           <Route
             exact path="/regular/alphabet"

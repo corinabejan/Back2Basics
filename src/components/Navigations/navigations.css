@@ -13,6 +13,10 @@
 #navigation-bar li {
     padding: 1rem;
 }
+#navigation-bar li:hover {
+background-color:#B282A1;
+transform: scale(0.95);
+}
 #navigation-bar li a{
     padding: 0.5rem;
     text-decoration: none;
@@ -21,5 +25,4 @@
 
 #navigation-bar li a:hover{
    cursor: pointer;
-   background: darker(#CB4BA7, 5)
 }
