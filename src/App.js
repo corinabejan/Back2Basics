@@ -12,6 +12,7 @@ import RegularLessons from "./pages/RegularLessons/alphabet"
 import Mentee from './pages/Mentee/Mentee-list/Mentee'
 import MentorList from './pages/Mentor/Mentor-list';
 import MathLesson from "./pages/RegularLessons/math"
+import CustomLessons from "./pages/CustomLessons"
 
 
 function App() {
@@ -58,6 +59,10 @@ function App() {
           <Route
             exact path="/regular/math"
             component={MathLesson}
+          />
+          <Route
+            exact path="/custom"
+            component={CustomLessons}
           />
         </Switch>
     </div>

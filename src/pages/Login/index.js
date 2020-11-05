@@ -22,7 +22,7 @@ export default function LoginScreen(){
 
         //push to specific dashboard when possible
 
-        history.push("/teacher")
+        history.push("/custom")
     }
 
 
