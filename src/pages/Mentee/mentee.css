@@ -1,0 +1,59 @@
+#mentee-container{
+    color: black;
+    font-size: 14px;
+
+}
+#mentee-container button{
+    width:10rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: #ffffff solid;
+    color: #ffffff;
+    float: right;
+    margin:1rem;
+    transition: transform 80ms ease-in;
+}
+#mentee-container button:hover{
+cursor: pointer;
+background-color: #B282A1;
+
+}
+#mentee-container button:active {
+    transform: scale(0.95);
+}
+#mentee-container button:focus {
+    outline:none
+}
+.mentee-bio-wrap-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #CB4BA7;
+    min-height: 10rem; 
+    width: 100%;
+    text-align:center;
+    margin: 2rem;
+    border-radius:2rem;
+    border:1px solid #ffffff; 
+
+}
+
+.mentee-bio-wrap-1 img {
+    border-radius: 50%;
+   border: solid #CB4BA7; 
+   padding-top: 1rem;
+   padding-left: 2rem;
+   
+}
+.mentee-bio-wrap-1 p {
+margin: 0;
+padding: 0
+}
+.mentee-bio-wrap-1 div {
+padding: 0.5rem;
+}
+.mentee-bio-wrap-1 .stick {
+    padding: 0.5rem
+
+}
+

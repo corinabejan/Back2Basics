@@ -8,6 +8,9 @@ import PrivateRoute from "./Components/PrivateRoute"
 import Navigation from './components/Navigations/Navigation';
 import HomePage from "./pages/HomePage/HomePage"
 import Mentors from './pages/Mentor/Mentors';
+import Mentee from './pages/Mentee/Mentee-list/Mentee'
+import MenteeDetail from './pages/Mentee/Mentee-detail'
+import MentorList from './pages/Mentor/Mentor-list';
 
 function App() {
   return (
@@ -27,8 +30,20 @@ function App() {
             component={HomePage}
           />
           <Route
-            exact path="/mentor"
+            exact path="/mentors"
+            component={MentorList}
+          />
+          <Route
+            exact path="/mentors/:id"
             component={Mentors}
+          />
+          <Route
+            exact path="/mentee"
+            component={Mentee}
+          />
+          <Route
+            exact path="/mentee/:id"
+            component={MenteeDetail}
           />
           <Route
             exact path="/login"
