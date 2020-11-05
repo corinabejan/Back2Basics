@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "firebase";
-import './index.css'
+import "./index.css";
+import { BigWhiteboard } from "react-component-whiteboard";
 import RegularLessons from "../RegularLessons/alphabet";
 
 export default function Student() {
@@ -28,13 +29,26 @@ export default function Student() {
     console.log(docRef);
   }, []);
 
+  const styles = {
+    border: "0.0625rem solid #9c9c9c",
+    borderRadius: "0.25rem",
+  };
+
   return (
     <>
-      <h1><em><bold>Welcome,</bold></em> <span>{studentData.user_name}</span></h1>
-      <br/>
+      <h1>
+        <em>
+          <bold>Welcome,</bold>
+        </em>{" "}
+        <span>{studentData.user_name}</span>
+      </h1>
+      <br />
       <img src={studentData.user_image} />
-      <br/>
+      <br />
       <RegularLessons />
+      <div className="board">
+        <BigWhiteboard />
+      </div>
     </>
   );
 }
