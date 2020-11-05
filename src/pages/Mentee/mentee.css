@@ -1,3 +1,4 @@
+
 #mentee-container{
     color: black;
     font-size: 14px;
@@ -6,8 +7,9 @@
 #mentee-container button{
     width:10rem;
     height: 3rem;
-    border-radius: 10px;
+    background-color: #CB4BA7;
     border: #ffffff solid;
+    border-radius: 1rem;
     color: #ffffff;
     float: right;
     margin:1rem;
@@ -35,6 +37,7 @@ background-color: #B282A1;
     margin: 2rem;
     border-radius:2rem;
     border:1px solid #ffffff; 
+    box-shadow: 0 14px 28px rgba(0,0,0, 0.25), 0 10px rgba(0,0,0, 0.22);
 
 }
 
@@ -56,4 +59,51 @@ padding: 0.5rem;
     padding: 0.5rem
 
 }
+.menteeDetail-container {
+    display: flex;
+    justify-content: center;
+}
+.menteeDetail-bio {
+    display: flex;
+    flex-direction: row;
+        grid-area: bio;
+        width: 30rem;
+        height: 20rem;
+        background-color: #CB4BA7;
+        color: #ffffff;
+        font-size: 14px;
+    }
+    .menteeDetail-bio img{
+        border-radius: 50%;
+        border: solid #CB4BA7; 
+        padding-top: 1rem;
+        padding-left: 2rem;
+        width: 200px;
+        height: 200px
+    }
+    .menteeDetail-bio p {
+        margin: 0;
+        padding: 0
+        }
+.slide-active {
+    position: fixed;
+    top: 70%;
+    right: -600px;
+    transform: translateY(-50%);
+    width: 40rem;
+    padding: 3rem
+}
+.slide{
+    right: 0
+}
+.toggle {
+    position: absolute;
+    height: 4rem;
+    width: 15rem;
+    background: #CB4BA7;
+    top: 10;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
 
+}
