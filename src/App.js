@@ -14,6 +14,7 @@ import Mentee from './pages/Mentee/Mentee-list/Mentee'
 import MentorList from './pages/Mentor/Mentor-list';
 import Student from './pages/Student'
 import MathLesson from "./pages/RegularLessons/math"
+import CustomLessons from "./pages/CustomLessons"
 
 
 
@@ -73,6 +74,10 @@ function App() {
             exact path="/regular/math"
             component={MathLesson}
 
+          />
+          <Route
+            exact path="/custom"
+            component={CustomLessons}
           />
         </Switch>
     </div>

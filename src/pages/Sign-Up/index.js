@@ -128,32 +128,33 @@ const uploadImage = async (e) => {
                         Classified as:
                     </label>
                     <select
+                        value={status}
+                        onChange={(e) => set_Status(e.target.value)}
                         id="status"
                         required
                     >
+                        <option>
+                            --Choose-Credentials--
+                        </option>
                         <option
-                            value="student"
-                            onClick={(e) => set_Status(e.target.value)}>
+                            value="student">
                             Student
-                    </option>
+                        </option>
                         <option
                             value="Teacher"
-                            onClick={(e) => set_Status(e.target.value)}
                         >
                             Teacher
-                    </option>
+                        </option>
                         <option
                             value="men-tee"
-                            onClick={(e) => set_Status(e.target.value)}
                         >
                             Men-Tee
-                    </option>
+                        </option>
                         <option
                             value="Mentor"
-                            onClick={(e) => set_Status(e.target.value)}
                         >
                             Mentor
-                    </option>
+                        </option>
                     </select>
                 </div>
                 <div>
