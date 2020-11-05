@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
+import { useHistory } from "react-router-dom"
 import firebase from 'firebase'
 import "./login.css"
 import { Link } from "react-router-dom"
 
-export default function LoginScreen() {
+export default function LoginScreen(){
+    const history = useHistory()
     const [email, set_Email] = useState("")
     const [password, set_Password] = useState("")
 
     function sendEmail(e) {
         e.preventDefault()
-
-        console.log("Event test", email, password)
 
         firebase.auth().signInWithEmailAndPassword(email, password).catch(function (e) {
             var errorCode = e.code;
@@ -20,6 +20,9 @@ export default function LoginScreen() {
         set_Password("")
         set_Email("")
 
+        //push to specific dashboard when possible
+
+        history.push("/teacher")
     }
 
 

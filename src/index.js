@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import firebase from "firebase"
 import { BrowserRouter as Router } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB1UzBwgI9AWH7C6C0E2uAutNKooqzZRFA",

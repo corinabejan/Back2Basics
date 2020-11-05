@@ -9,44 +9,77 @@ export default function SignUp() {
     const [userImage, set_UserImage] = useState("")
     const [status, set_Status] = useState("")
     const [password, set_Password] = useState("")
+    const [currentUser, set_CurrentUser] = useState(null)
 
-    function sendDatabase() {
-        const database = firebase.firestore()
+    function sendDatabase(){
+            const database = firebase.firestore()
 
-        database.collection("users").doc(name).set({
-            user_name: name,
-            user_image: userImage,
-            user_credentials: status,
-            user_password: password,
-        })
-            .then(function () {
-                console.log("Document successly stored")
+            database.collection("users").doc(firebase.auth().currentUser.uid).set({
+                user_name: name,
+                user_email: email,
+                user_image: userImage,
+                user_credentials: status,
             })
-            .catch(function (e) {
-                console.log("Error", e)
+            .then(function(){
+                console.log("success")
             })
+            .catch(function(e){
+                console.log("Fail", e)
+            })
+
+            set_Name("")
+            set_Email("")
+            set_UserImage("")
+            set_Status("")
+            set_Password("")
     }
 
-    function sendNewData(e) {
+    async function sendNewData(e){
+        try{
         e.preventDefault()
 
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (e) {
+        await firebase.auth().createUserWithEmailAndPassword(email,password)
+        .then(() => {
+            set_CurrentUser(firebase.auth().currentUser)
+        })
+        .catch(function(e){
             var errorCode = e.code;
             var errorMessage = e.message;
             console.log(`Error, ${errorCode}, ${errorMessage}`)
         })
 
-        console.log(`Credentials: ${status} ${name}`)
-
         sendDatabase()
 
-        set_Name("")
-        set_Email("")
-        set_UserImage("")
-        set_Status("")
-        set_Password("")
-
+    } catch(error){
+        console.log(error)
     }
+}
+
+const uploadImage = async (e) => {
+    try{
+        e.preventDefault()
+
+        const files = e.target.files
+
+        const data = new FormData()
+        data.append("file", files[0])
+        data.append("upload_preset", "profile_pics")
+
+
+        const response = await fetch(
+            "https://api.cloudinary.com/v1_1/djzjepmnr/image/upload",
+            {
+                method: "POST",
+                body: data
+            })
+
+            const file = await response.json();
+            set_UserImage(file.secure_url)
+            
+    }catch(error){
+        console.log("Error", error)
+    }
+}
 
     return (
         <div id="signup-container">
@@ -58,8 +91,7 @@ export default function SignUp() {
 
                     <label>
                         Name:
-                </label>
-
+                    </label>
                     <input
                         type="text"
                         value={name}
@@ -71,7 +103,7 @@ export default function SignUp() {
                 <div>
                     <label>
                         Email:
-                </label>
+                     </label>
                     <input
                         type="email"
                         value={email}
@@ -87,8 +119,8 @@ export default function SignUp() {
                     </label>
                     <input
                         type="file"
-                        value={userImage}
-                        onChange={(e) => set_UserImage(e.target.value)}
+                        name="file"
+                        onChange={uploadImage}
                     />
                 </div>
                 <div>
