@@ -1,0 +1,12 @@
+.player_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.react-player{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+}

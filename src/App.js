@@ -8,9 +8,11 @@ import PrivateRoute from "./Components/PrivateRoute"
 import Navigation from './components/Navigations/Navigation';
 import HomePage from "./pages/HomePage/HomePage"
 import Mentors from './pages/Mentor/Mentors';
+import RegularLessons from "./pages/RegularLessons/alphabet"
 import Mentee from './pages/Mentee/Mentee-list/Mentee'
 import MenteeDetail from './pages/Mentee/Mentee-detail'
 import MentorList from './pages/Mentor/Mentor-list';
+
 
 function App() {
   return (
@@ -21,10 +23,6 @@ function App() {
         Back 2 Basics
       </header>
       <Switch>
-          <PrivateRoute 
-            exact path ="/teacher" 
-            component={Teacher} 
-          />
           <Route
             exact path="/"
             component={HomePage}
@@ -38,7 +36,7 @@ function App() {
             component={Mentors}
           />
           <Route
-            exact path="/mentee"
+            exact path="/mentees"
             component={Mentee}
           />
           <Route
@@ -52,6 +50,14 @@ function App() {
           <Route
             exact path="/signup"
             component={SignUp}
+          />
+          <PrivateRoute 
+            exact path ="/teacher" 
+            component={Teacher} 
+          />
+          <Route
+            exact path="/regular/alphabet"
+            component={RegularLessons}
           />
         </Switch>
     </div>
