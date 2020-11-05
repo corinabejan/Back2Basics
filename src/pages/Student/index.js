@@ -12,9 +12,7 @@ export default function Student() {
   const [video, setVideo] = useState({});
 
   const docRef = db.collection("users").doc(auth.currentUser.uid);
-  const vidRef = db.collection("custom_lessons").doc('Custom')
-
-  console.log(vidRef)
+  const vidRef = db.collection("custom_lessons").doc('Custom');
 
   useEffect(() => {
     docRef
@@ -50,7 +48,7 @@ export default function Student() {
       });
   }, []);
 
-  console.log(video.lessons)
+  // console.log(video.lessons)
 
   const videoJSX = video.lessons ? (video.lessons.map((vid, index) => (
     <div key={index}>
