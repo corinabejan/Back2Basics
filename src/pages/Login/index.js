@@ -12,16 +12,17 @@ export default function LoginScreen(){
     function sendEmail(e) {
         e.preventDefault()
 
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function (e) {
-            var errorCode = e.code;
-            var errorMessage = e.message;
-            console.log(`Error, ${errorCode}, ${errorMessage}`)
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .then(function(){
+            set_Password("")
+            set_Email("")
+            history.push("/student")
+            return firebase.auth().signInWithEmailAndPassword(email, password).catch(function (e) {
+                var errorCode = e.code;
+                var errorMessage = e.message;
+                console.log(`Error, ${errorCode}, ${errorMessage}`)
+            })
         })
-        set_Password("")
-        set_Email("")
-
-        //push to specific dashboard when possible
-        history.push("/")
     }
 
 

@@ -44,6 +44,7 @@ function App() {
             exact path="/mentee"
             component={MenteeList}
           />
+
           <PrivateRoute
             exact path="/mentees/:id"
             component={MenteeDetail}
