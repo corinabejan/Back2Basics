@@ -18,6 +18,7 @@ export default function Student() {
     docRef
       .get()
       .then(function (doc) {
+        console.log(doc)
         if (doc.exists) {
           console.log("Document data:", doc.data());
           setStudentData(doc.data());

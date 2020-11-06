@@ -22,7 +22,7 @@ export default function LoginScreen(){
         })
             set_Password("")
             set_Email("")
-            history.push("/")
+            history.push("/student")
     }
 
 
