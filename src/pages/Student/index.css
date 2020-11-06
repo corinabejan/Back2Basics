@@ -1,12 +1,9 @@
-.board {
-  margin-bottom: 50px;
+.popup {
+  margin-right: -1700px;
 }
 
 .big-whiteboard-component-container {
-  position: relative;
-  margin-top: 500px;
-  width: 50px;
-  z-index: -1;
+  margin-top: 200px;
 }
 
 .math {

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import firebase from "firebase";
 import "./index.css";
-// import { BigWhiteboard } from "react-component-whiteboard";
+import Popup from "../Popup/popup";
 import RegularLessons from "../RegularLessons/alphabet";
-import MathLessons from "../RegularLessons/math"
+import MathLessons from "../RegularLessons/math";
 
 export default function Student() {
   const db = firebase.firestore();
@@ -12,7 +12,7 @@ export default function Student() {
   const [video, setVideo] = useState({});
 
   const docRef = db.collection("users").doc(auth.currentUser.uid);
-  const vidRef = db.collection("custom_lessons").doc('Custom');
+  const vidRef = db.collection("custom_lessons").doc("Custom");
 
   useEffect(() => {
     docRef
@@ -50,13 +50,14 @@ export default function Student() {
 
   // console.log(video.lessons)
 
-  const videoJSX = video.lessons ? (video.lessons.map((vid, index) => (
-    <div key={index}>
-      <p>{vid.education_type}</p>
-      <video controls src={vid.video_url} style={{ width: "500px" }}/>
-    </div>
-  ))) : "Loading"
-
+  const videoJSX = video.lessons
+    ? video.lessons.map((vid, index) => (
+        <div key={index}>
+          <p>{vid.education_type}</p>
+          <video controls src={vid.video_url} style={{ width: "500px" }} />
+        </div>
+      ))
+    : "Loading";
 
   return (
     <>
@@ -67,16 +68,16 @@ export default function Student() {
         <span>{studentData.user_name}</span>
       </h1>
       <br />
+      <div className="popup">
+        <Popup />
+      </div>
       <img src={studentData.user_image} />
       <br />
       <RegularLessons />
       <div className="math">
-      <MathLessons className="math"/>
+        <MathLessons className="math" />
       </div>
       {videoJSX}
-      {/* <div className="board">
-        <BigWhiteboard />
-      </div> */}
     </>
   );
 }
