@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import "./mentors.css"
-import profile from "./profile.jpg"
 import { Link } from "react-router-dom"
 import firebase from 'firebase'
 
@@ -38,6 +37,7 @@ export default function MentorsDetail() {
 
     return (
         <div id="mentor-container">
+          mentor page
             <p className="welcome-text">welcome back lili</p>
             <section className="profile-info">
                 <img src={mentorDetailData.user_image} className="bio-img" alt="profile" />
