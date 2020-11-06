@@ -10,7 +10,6 @@ import HomePage from "./pages/HomePage/HomePage"
 import MentorsDetail from './pages/Mentor/MentorDetail';
 import MenteeList from './pages/Mentee/Mentee-list/MenteeList'
 import MenteeDetail from './pages/Mentee/Mentee-detail'
-import Mentors from './pages/Mentor/Mentors';
 import RegularLessons from "./pages/RegularLessons/alphabet"
 import MentorList from './pages/Mentor/Mentor-list';
 import Student from './pages/Student'
