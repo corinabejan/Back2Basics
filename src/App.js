@@ -31,15 +31,15 @@ function App() {
             exact path="/"
             component={HomePage}
           />
-          <PrivateRoute
+          <Route
             exact path="/mentors"
             component={MentorList}
           />
-          <PrivateRoute
+          <Route
             exact path="/mentors/:id"
             component={Mentors}
           />
-          <PrivateRoute
+          <Route
             exact path="/mentees"
             component={Mentee}
           />
@@ -49,33 +49,33 @@ function App() {
             component={MenteeDetail}
           /> */}
 
-          <PrivateRoute
+          <Route
             exact path="/login"
             component={LoginScreen}
           />
-          <PrivateRoute
+          <Route
             exact path="/signup"
             component={SignUp}
           />
-          <PrivateRoute 
+          <Route 
             exact path ="/teacher" 
             component={Teacher} 
           />
-          <PrivateRoute
+          <Route
             exact path="/regular/alphabet"
             component={RegularLessons}
           />
-          <PrivateRoute
+          <Route
 
           exact path="/student"
           component={Student}
           />
-          <PrivateRoute
+          <Route
             exact path="/regular/math"
             component={MathLesson}
 
           />
-          <PrivateRoute
+          <Route
             exact path="/custom"
             component={CustomLessons}
           />

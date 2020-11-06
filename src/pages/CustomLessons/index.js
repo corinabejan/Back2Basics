@@ -16,7 +16,6 @@ export default function CustomLesson() {
   const [loading, setLoading] = useState(false);
   const [video, setVideo] = useState("");
   const [educationType, set_EducationType] = useState("")
-  const [educationType, set_EducationType] = useState("")
   const db = firebase.firestore()
   const auth = firebase.auth();
 
