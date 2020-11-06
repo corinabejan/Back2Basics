@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
 import firebase from "firebase";
 import "./index.css";
-import { BigWhiteboard } from "react-component-whiteboard";
+import Popup from "../Popup/popup";
 import RegularLessons from "../RegularLessons/alphabet";
+import MathLessons from "../RegularLessons/math";
 
 export default function Student() {
   const db = firebase.firestore();
   const auth = firebase.auth();
   const [studentData, setStudentData] = useState({});
+  const [video, setVideo] = useState({});
 
   const docRef = db.collection("users").doc(auth.currentUser.uid);
+  const vidRef = db.collection("custom_lessons").doc("Custom");
 
   useEffect(() => {
     docRef
@@ -29,10 +32,32 @@ export default function Student() {
     console.log(docRef);
   }, []);
 
-  const styles = {
-    border: "0.0625rem solid #9c9c9c",
-    borderRadius: "0.25rem",
-  };
+  useEffect(() => {
+    vidRef
+      .get()
+      .then(function (doc) {
+        if (doc.exists) {
+          console.log("Document data:", doc.data());
+          setVideo(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch(function (error) {
+        console.log("Error getting document:", error);
+      });
+  }, []);
+
+  // console.log(video.lessons)
+
+  const videoJSX = video.lessons
+    ? video.lessons.map((vid, index) => (
+        <div key={index}>
+          <p>{vid.education_type}</p>
+          <video controls src={vid.video_url} style={{ width: "500px" }} />
+        </div>
+      ))
+    : "Loading";
 
   return (
     <>
@@ -43,12 +68,16 @@ export default function Student() {
         <span>{studentData.user_name}</span>
       </h1>
       <br />
+      <div className="popup">
+        <Popup />
+      </div>
       <img src={studentData.user_image} />
       <br />
       <RegularLessons />
-      <div className="board">
-        <BigWhiteboard />
+      <div className="math">
+        <MathLessons className="math" />
       </div>
+      {videoJSX}
     </>
   );
 }

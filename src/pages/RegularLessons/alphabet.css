@@ -1,12 +1,16 @@
-.player_container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.player_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.react-player{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    align-content: center;
+.react-player {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+}
+
+h4 {
+  margin-right: 10px;
 }
