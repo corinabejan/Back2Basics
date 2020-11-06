@@ -14,15 +14,15 @@ export default function LoginScreen(){
 
         firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
         .then(function(){
-            set_Password("")
-            set_Email("")
-            history.push("/student")
             return firebase.auth().signInWithEmailAndPassword(email, password).catch(function (e) {
                 var errorCode = e.code;
                 var errorMessage = e.message;
                 console.log(`Error, ${errorCode}, ${errorMessage}`)
             })
         })
+            set_Password("")
+            set_Email("")
+            history.push("/")
     }
 
 
