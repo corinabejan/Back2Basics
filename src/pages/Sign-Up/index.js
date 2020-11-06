@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 import firebase from "firebase"
 import "./signup.css"
 
@@ -10,6 +11,7 @@ export default function SignUp() {
     const [status, set_Status] = useState("")
     const [password, set_Password] = useState("")
     const [currentUser, set_CurrentUser] = useState(null)
+    const history = useHistory()
 
     function sendDatabase(){
             const database = firebase.firestore()
@@ -32,6 +34,8 @@ export default function SignUp() {
             set_UserImage("")
             set_Status("")
             set_Password("")
+
+            history.push("/")
     }
 
     async function sendNewData(e){
