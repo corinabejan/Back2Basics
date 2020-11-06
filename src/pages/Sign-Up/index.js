@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 import firebase from "firebase"
 import "./signup.css"
 
@@ -10,6 +11,7 @@ export default function SignUp() {
     const [status, set_Status] = useState("")
     const [password, set_Password] = useState("")
     const [currentUser, set_CurrentUser] = useState(null)
+    const history = useHistory()
 
     function sendDatabase(){
             const database = firebase.firestore()
@@ -32,6 +34,8 @@ export default function SignUp() {
             set_UserImage("")
             set_Status("")
             set_Password("")
+
+            history.push("/")
     }
 
     async function sendNewData(e){
@@ -128,32 +132,33 @@ const uploadImage = async (e) => {
                         Classified as:
                     </label>
                     <select
+                        value={status}
+                        onChange={(e) => set_Status(e.target.value)}
                         id="status"
                         required
                     >
+                        <option>
+                            --Choose-Credentials--
+                        </option>
                         <option
-                            value="student"
-                            onClick={(e) => set_Status(e.target.value)}>
+                            value="student">
                             Student
-                    </option>
+                        </option>
                         <option
                             value="Teacher"
-                            onClick={(e) => set_Status(e.target.value)}
                         >
                             Teacher
-                    </option>
+                        </option>
                         <option
                             value="men-tee"
-                            onClick={(e) => set_Status(e.target.value)}
                         >
                             Men-Tee
-                    </option>
+                        </option>
                         <option
                             value="Mentor"
-                            onClick={(e) => set_Status(e.target.value)}
                         >
                             Mentor
-                    </option>
+                        </option>
                     </select>
                 </div>
                 <div>
