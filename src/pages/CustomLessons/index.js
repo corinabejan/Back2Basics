@@ -15,8 +15,9 @@ const skillsArray = [
 export default function CustomLesson() {
   const [loading, setLoading] = useState(false);
   const [video, setVideo] = useState("");
-  const [educationType, set_EducationType] = useState("");
-  const db = firebase.firestore();
+  const [educationType, set_EducationType] = useState("")
+  const [educationType, set_EducationType] = useState("")
+  const db = firebase.firestore()
   const auth = firebase.auth();
 
   const uploadVideo = async (e) => {
@@ -43,22 +44,46 @@ export default function CustomLesson() {
     setLoading(false);
   };
 
-  function sendData(e) {
-    e.preventDefault();
-    db.collection("custom_lessons")
-      .doc(`Custom: ${auth.currentUser.uid}`)
-      .set({
-        lesson_type: educationType,
-        video_url: video,
-      })
-      .then(function () {
-        var popUp = document.getElementById("myPopup");
-        popUp.classList.toggle("show");
-        console.log("success");
-      })
-      .catch(function (error) {
-        console.log("Error", error);
-      });
+  function sendData(e){
+      e.preventDefault()
+    db.collection("custom_lessons").doc(`Custom`)
+    .get()
+    .then(function(doc){
+        if(doc.exists){
+            db.collection("custom_lessons").doc(`Custom`)
+            .update({
+                lessons: firebase.firestore.FieldValue.arrayUnion({
+                    video_url: video,
+                    education_type: educationType,
+                })
+            })
+            .then(function(){
+                var popUp = document.getElementById("myPopup")
+                popUp.classList.toggle("show")
+                console.log("success")
+            })
+            .catch(function(error){
+                console.log("Error", error)
+            })
+        } else {
+            db.collection("custom_lessons").doc(`Custom`)
+            .set({
+                lessons: [{
+                    video_url: video,
+                    education_type: educationType
+                }]
+            }, {merge: true})
+            .then(function(){
+                var popUp = document.getElementById("myPopup")
+                popUp.classList.toggle("show")
+                console.log("success")
+            })
+            .catch(function(error){
+                console.log("Error", error)
+            })
+        }
+    })
+
   }
 
   const optionSetter = skillsArray.map((skill) => {

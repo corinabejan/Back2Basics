@@ -21,7 +21,7 @@ export default function LoginScreen(){
         set_Email("")
 
         //push to specific dashboard when possible
-        history.push("/student")
+        history.push("/")
     }
 
 
