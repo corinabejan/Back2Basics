@@ -1,44 +1,42 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-const mentors = [{
-    id: 1,
-    name: "Lily",
-    cridential: "BA in Business Admin",
-    mentorshipArea: ["Education", "business"],
-    imgUrl: "https://images.pexels.com/photos/3779760/pexels-photo-3779760.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-},
-{
-    id: 2,
-    name: "Test",
-    cridential: "BA in web-development",
-    mentorshipArea: ["Education", "business"],
-    imgUrl: "sdfsdfs"
+import firebase from 'firebase'
 
-},
-{
-    id: 3, name: "Emnet",
-    cridential: "MA in communications",
-    mentorshipArea: ["personal-development", "education", "mind-set-shift"],
-    imgUrl: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
 
-}]
 export default function MentorList() {
+    const[mentorData, set_mentorData] = useState([])
+    const db = firebase.firestore()
+    const auth = firebase.auth()
+    const docRef = db.collection("users")
+
+
+
+    useEffect(() => {
+            docRef.onSnapshot(function(querySnapshot){
+                querySnapshot.exists
+                ? console.log('document', querySnapshot.data())
+                : console.log("No Document found")
+            })
+        console.log(mentorData)
+    }, [docRef, mentorData])
+    console.log('doc', mentorData)
     return (
         <div>
             <h2>
                 mentors
                 </h2>
-            {mentors.map(mentor => {
+            {mentorData.map((mentor,index) => {
                 return (
-                    <div>
-                        <p>{mentor.name}</p>
+                    <div key={index}>
+                        <p>{mentor.user_name}</p>
+                        <img src={mentor.use_image}/>
                         <p>{mentor.mentorshipArea.map(area => {
                             return (
                                 <span style={{ padding: "20" }}>{area}</span>
                             )
                         })}</p>
-                        <Link to={`/mentors/${mentor.id}`}>
-                            <button>
+                        <Link to={`/mentors/${mentor.user_name}`}>
+                            <button className='mentor-btn'>
                                 See Detail
                             </button>
                         </Link>

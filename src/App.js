@@ -7,10 +7,11 @@ import { AuthProvider } from "./Components/Auth"
 import PrivateRoute from "./Components/PrivateRoute"
 import Navigation from './components/Navigations/Navigation';
 import HomePage from "./pages/HomePage/HomePage"
+import MentorsDetail from './pages/Mentor/MentorDetail';
+import MenteeList from './pages/Mentee/Mentee-list/MenteeList'
+import MenteeDetail from './pages/Mentee/Mentee-detail'
 import Mentors from './pages/Mentor/Mentors';
 import RegularLessons from "./pages/RegularLessons/alphabet"
-import Mentee from './pages/Mentee/Mentee-list/Mentee'
-// import MenteeDetail from './pages/Mentee/Mentee-detail'
 import MentorList from './pages/Mentor/Mentor-list';
 import Student from './pages/Student'
 import MathLesson from "./pages/RegularLessons/math"
@@ -21,12 +22,11 @@ import CustomLessons from "./pages/CustomLessons"
 function App() {
   return (
     <AuthProvider>
-    <div className="App">
-      <Navigation />
-      <header className="App-header">
-        Back 2 Basics
-      </header>
+      <div className="App">
+        <Navigation />
+
       <Switch>
+
           <Route
             exact path="/"
             component={HomePage}
@@ -35,25 +35,26 @@ function App() {
             exact path="/mentors"
             component={MentorList}
           />
+
           <PrivateRoute
-            exact path="/mentors/:id"
-            component={Mentors}
+            exact path="mentors/id"
+            component={MentorsDetail}
           />
           <PrivateRoute
-            exact path="/mentees"
-            component={Mentee}
+            exact path="/mentee"
+            component={MenteeList}
           />
 
-          {/* <PrivateRoute
-            exact path="/mentee/:id"
+          <PrivateRoute
+            exact path="/mentees/:id"
             component={MenteeDetail}
-          /> */}
-
-          <PrivateRoute
+          />
+ 
+          <Route
             exact path="/login"
             component={LoginScreen}
           />
-          <PrivateRoute
+          <Route
             exact path="/signup"
             component={SignUp}
           />
@@ -66,21 +67,19 @@ function App() {
             component={RegularLessons}
           />
           <PrivateRoute
-
           exact path="/student"
           component={Student}
           />
           <PrivateRoute
             exact path="/regular/math"
             component={MathLesson}
-
           />
           <PrivateRoute
             exact path="/custom"
             component={CustomLessons}
           />
         </Switch>
-    </div>
+      </div>
     </AuthProvider>
   );
 }
